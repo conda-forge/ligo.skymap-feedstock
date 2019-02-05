@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.0.19" %}
-{% set sha256 = "a2a5bac2b56dfce41261b6644709760bcdc7b59b06202f9f93d180ae968a19e7" %}
+{% set version = "0.1.0" %}
+{% set sha256 = "23d20a99ce5ad8aac7b5073e6334566562dbf8cf100a615757516f4565002601" %}
 
 package:
   name: {{ name }}
@@ -13,8 +13,6 @@ source:
   patches:
     # tell ah_bootstrap to not download anything
     - setup.cfg-offline.patch
-    # fix requirements
-    - requirements.patch
 
 build:
   number: 0
@@ -62,7 +60,7 @@ requirements:
     - lalsuite >=6.49
     - ligo-common
     - ligo-gracedb >=2.0.1
-    - lscsoft-glue
+    - ligo-segments >=1.2.0
     - matplotlib >=2.1.0
     - networkx
     - pillow >=2.5.0
