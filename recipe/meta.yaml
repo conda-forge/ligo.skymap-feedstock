@@ -13,8 +13,6 @@ source:
   patches:
     # tell ah_bootstrap to not download anything
     - setup.cfg-offline.patch
-    # fix requirements
-    - requirements.patch
 
 build:
   number: 0
@@ -62,7 +60,7 @@ requirements:
     - lalsuite >=6.49
     - ligo-common
     - ligo-gracedb >=2.0.1
-    - lscsoft-glue
+    - ligo-segments >=1.2.0
     - matplotlib >=2.1.0
     - networkx
     - pillow >=2.5.0
