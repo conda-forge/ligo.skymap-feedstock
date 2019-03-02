@@ -72,6 +72,8 @@ requirements:
     - seaborn >=0.8.0
     - setuptools
     - tqdm
+  run_constrained:
+    - python-ligo-lw >=1.5.2
 
 test:
   imports:
