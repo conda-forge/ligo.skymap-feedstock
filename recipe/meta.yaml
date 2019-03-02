@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.0" %}
-{% set sha256 = "23d20a99ce5ad8aac7b5073e6334566562dbf8cf100a615757516f4565002601" %}
+{% set version = "0.1.2" %}
+{% set sha256 = "1728a23b65f93defedb33a2cbf87d2f424a2cce5b7a45785fe7b42c671a88213" %}
 
 package:
   name: {{ name }}
@@ -37,7 +37,7 @@ requirements:
   build:
     - {{ compiler('c') }}
     - pkg-config
-    #- llvm-openmp  # [osx and c_compiler != 'toolchain_c']
+    - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
   host:
     - python
     - setuptools
@@ -45,32 +45,35 @@ requirements:
     - numpy 1.14.*
     - chealpix
     - gsl
-    #- llvm-openmp  # [osx and c_compiler != 'toolchain_c']
+    - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
   run:
+    - astroplan
+    - astropy >=3.1
+    - astropy-healpix >=0.3
     - chealpix
     - gsl
-    #- llvm-openmp  # [osx and c_compiler != 'toolchain_c']
-    - python
-    - {{ pin_compatible('numpy') }}
-    - astroplan
-    - astropy-healpix >=0.3
-    - astropy >=3.1
     - healpy
     - h5py
-    - lalsuite >=6.49
+    - lalsuite >=6.53
     - ligo-common
     - ligo-gracedb >=2.0.1
     - ligo-segments >=1.2.0
+    - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
+    - lscsoft-glue >=2.0.0
     - matplotlib >=2.1.0
     - networkx
+    - {{ pin_compatible('numpy') }}
     - pillow >=2.5.0
     - ptemcee
+    - python
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
     - seaborn >=0.8.0
     - setuptools
     - tqdm
+  run_constrained:
+    - python-ligo-lw >=1.5.2
 
 test:
   imports:
