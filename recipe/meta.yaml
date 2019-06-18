@@ -15,7 +15,7 @@ source:
     - setup.cfg-offline.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or py<36]
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv --install-option=--use-system-libraries"
   entry_points:
