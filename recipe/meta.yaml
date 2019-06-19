@@ -15,7 +15,7 @@ source:
     - setup.cfg-offline.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win or py<36]
   script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv --install-option=--use-system-libraries"
   entry_points:
@@ -41,6 +41,7 @@ requirements:
   host:
     - chealpix
     - gsl
+    - libcblas=*=*netlib
     - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
     - numpy 1.14.*
     - pip
@@ -55,6 +56,7 @@ requirements:
     - healpy
     - h5py
     - lalsuite >=6.53
+    - libcblas
     - ligo-common
     - ligo-gracedb >=2.0.1
     - ligo-segments >=1.2.0
