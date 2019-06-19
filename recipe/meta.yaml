@@ -39,13 +39,13 @@ requirements:
     - pkg-config
     - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
   host:
-    - python
-    - setuptools
-    - pip
-    - numpy 1.14.*
     - chealpix
     - gsl
     - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
+    - numpy 1.14.*
+    - pip
+    - python
+    - setuptools
   run:
     - astroplan
     - astropy >=3.1
