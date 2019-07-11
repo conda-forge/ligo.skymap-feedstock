@@ -41,7 +41,7 @@ requirements:
   host:
     - chealpix
     - gsl
-    - libcblas * *netlib
+    - libcblas
     - llvm-openmp  # [osx]
     - numpy 1.14.*
     - pip
