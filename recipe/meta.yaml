@@ -37,12 +37,12 @@ requirements:
   build:
     - {{ compiler('c') }}
     - pkg-config
-    - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
+    - llvm-openmp  # [osx]
   host:
     - chealpix
     - gsl
-    - libcblas=*=*netlib
-    - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
+    - libcblas * *netlib
+    - llvm-openmp  # [osx]
     - numpy 1.14.*
     - pip
     - python
@@ -60,7 +60,7 @@ requirements:
     - ligo-common
     - ligo-gracedb >=2.0.1
     - ligo-segments >=1.2.0
-    - llvm-openmp  # [osx and c_compiler != 'toolchain_c']
+    - llvm-openmp  # [osx]
     - lscsoft-glue >=2.0.0
     - matplotlib >=2.1.0
     - networkx
