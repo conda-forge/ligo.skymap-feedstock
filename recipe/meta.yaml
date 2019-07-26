@@ -1,13 +1,12 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.7" %}
-{% set sha256 = "a2493213a906c1de020657553c070c74844a62532449f3f200a8ff8a114e7f12" %}
+{% set version = "0.1.8" %}
+{% set sha256 = "92511d54f7611fa4068ee6a4a9bef1ee6c03f3e76d6fc1ae48b29a87169373fc" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
@@ -15,9 +14,9 @@ source:
     - setup.cfg-offline.patch
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win or py<36]
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv --install-option=--use-system-libraries"
+  script: "{{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries"
   entry_points:
     - bayestar-localize-coincs = ligo.skymap.tool.bayestar_localize_coincs:main
     - bayestar-localize-lvalert = ligo.skymap.tool.bayestar_localize_lvalert:main
@@ -26,9 +25,14 @@ build:
     - bayestar-sample-model-psd = ligo.skymap.tool.bayestar_sample_model_psd:main
     - ligo-skymap-combine = ligo.skymap.tool.ligo_skymap_combine:main
     - ligo-skymap-contour = ligo.skymap.tool.ligo_skymap_contour:main
+    - ligo-skymap-flatten = ligo.skymap.tool.ligo_skymap_flatten:main
+    - ligo-skymap-unflatten = ligo.skymap.tool.ligo_skymap_unflatten:main
     - ligo-skymap-from-samples = ligo.skymap.tool.ligo_skymap_from_samples:main
+    - ligo-skymap-constellations = ligo.skymap.tool.ligo_skymap_constellations:main
     - ligo-skymap-plot = ligo.skymap.tool.ligo_skymap_plot:main
     - ligo-skymap-plot-airmass = ligo.skymap.tool.ligo_skymap_plot_airmass:main
+    - ligo-skymap-plot-observability = ligo.skymap.tool.ligo_skymap_plot_observability:main
+    - ligo-skymap-plot-pp-samples = ligo.skymap.tool.ligo_skymap_plot_pp_samples:main
     - ligo-skymap-plot-stats = ligo.skymap.tool.ligo_skymap_plot_stats:main
     - ligo-skymap-plot-volume = ligo.skymap.tool.ligo_skymap_plot_volume:main
     - ligo-skymap-stats = ligo.skymap.tool.ligo_skymap_stats:main
@@ -48,7 +52,7 @@ requirements:
     - python
     - setuptools
   run:
-    - astroplan
+    - astroplan >=0.5
     - astropy >=3.1
     - astropy-healpix >=0.3
     - chealpix
@@ -62,7 +66,7 @@ requirements:
     - ligo-segments >=1.2.0
     - llvm-openmp  # [osx]
     - lscsoft-glue >=2.0.0
-    - matplotlib >=2.1.0
+    - matplotlib >=3.0.2
     - networkx
     - {{ pin_compatible('numpy') }}
     - pillow >=2.5.0
@@ -74,8 +78,6 @@ requirements:
     - seaborn >=0.8.0
     - setuptools
     - tqdm
-  run_constrained:
-    - python-ligo-lw >=1.5.2
 
 test:
   imports:
@@ -114,14 +116,13 @@ test:
     - ligo.skymap.plot.marker
     - ligo.skymap.plot.poly
     - ligo.skymap.plot.pp
-    - ligo.skymap.plot.setup_package
     - ligo.skymap.plot.util
     - ligo.skymap.postprocess
     - ligo.skymap.postprocess.contour
+    - ligo.skymap.postprocess.cosmology
     - ligo.skymap.postprocess.ellipse
     - ligo.skymap.postprocess.find_injection
     - ligo.skymap.postprocess.util
-    - ligo.skymap.setup_package
     - ligo.skymap.util
     - ligo.skymap.util.file
     - ligo.skymap.util.numpy
@@ -137,9 +138,14 @@ test:
     - bayestar-sample-model-psd --help
     - ligo-skymap-combine --help
     - ligo-skymap-contour --help
+    - ligo-skymap-flatten --help
+    - ligo-skymap-unflatten --help
     - ligo-skymap-from-samples --help
+    - ligo-skymap-constellations --help
     - ligo-skymap-plot --help
     - ligo-skymap-plot-airmass --help
+    - ligo-skymap-plot-observability --help
+    - ligo-skymap-plot-pp-samples --help
     - ligo-skymap-plot-stats --help
     - ligo-skymap-plot-volume --help
     - ligo-skymap-stats --help
@@ -150,7 +156,7 @@ about:
   dev_url: https://git.ligo.org/lscsoft/ligo.skymap
   license: GPLv2
   license_family: GPL
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE.rst'
+  license_file: LICENSE.rst
   summary: Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps
   description: |
     The `ligo.skymap` package provides tools for reading, writing, generating,
