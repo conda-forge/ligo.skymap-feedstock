@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.8" %}
-{% set sha256 = "92511d54f7611fa4068ee6a4a9bef1ee6c03f3e76d6fc1ae48b29a87169373fc" %}
+{% set version = "0.1.9" %}
+{% set sha256 = "f599ea873143a166d8c6d8dda81754792bd0868b1a810824138ea33332685e2b" %}
 
 package:
   name: {{ name }}
