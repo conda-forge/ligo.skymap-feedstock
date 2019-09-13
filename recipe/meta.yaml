@@ -12,6 +12,8 @@ source:
   patches:
     # tell ah_bootstrap to not download anything
     - setup.cfg-offline.patch
+    # remove lalsuite requirement, since we can list dependencies explicitly here
+    - requirements-no-lalsuite.patch
 
 build:
   number: 0
@@ -60,7 +62,6 @@ requirements:
     - gsl
     - healpy
     - h5py
-    - lalsuite >=6.53
     - libcblas
     - ligo-common
     - ligo-gracedb >=2.0.1
@@ -73,6 +74,10 @@ requirements:
     - pillow >=2.5.0
     - ptemcee
     - python
+    - python-lal
+    - python-lalinspiral
+    - python-lalmetaio
+    - python-lalsimulation
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
@@ -129,6 +134,7 @@ test:
     - ligo.skymap.util.numpy
     - ligo.skymap.util.sqlite
   requires:
+    - lalapps
     - pytest
   commands:
     - python -m pytest --pyargs "ligo.skymap"
