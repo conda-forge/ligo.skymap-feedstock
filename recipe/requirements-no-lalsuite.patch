@@ -1,0 +1,12 @@
+diff --git a/requirements.txt b/requirements.txt
+index ea1eb2a..323263e 100644
+--- a/requirements.txt
++++ b/requirements.txt
+@@ -4,7 +4,6 @@ astropy-healpix>=0.3  # https://github.com/astropy/astropy-healpix/pull/106
+ astroquery
+ healpy
+ h5py
+-lalsuite>=6.53
+ lscsoft-glue>=2.0.0
+ ligo-gracedb>=2.0.1
+ ligo-segments>=1.2.0

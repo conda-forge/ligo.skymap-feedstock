@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.9" %}
-{% set sha256 = "f599ea873143a166d8c6d8dda81754792bd0868b1a810824138ea33332685e2b" %}
+{% set version = "0.1.10" %}
+{% set sha256 = "a2029dc186166d5adfeb04de38014febbe61068f3c2cd1364b62e9fe0ae1fc3c" %}
 
 package:
   name: {{ name }}
@@ -12,6 +12,8 @@ source:
   patches:
     # tell ah_bootstrap to not download anything
     - setup.cfg-offline.patch
+    # remove lalsuite requirement, since we can list dependencies explicitly here
+    - requirements-no-lalsuite.patch
 
 build:
   number: 0
@@ -55,11 +57,11 @@ requirements:
     - astroplan >=0.5
     - astropy >=3.1
     - astropy-healpix >=0.3
+    - astroquery
     - chealpix
     - gsl
     - healpy
     - h5py
-    - lalsuite >=6.53
     - libcblas
     - ligo-common
     - ligo-gracedb >=2.0.1
@@ -72,6 +74,10 @@ requirements:
     - pillow >=2.5.0
     - ptemcee
     - python
+    - python-lal
+    - python-lalinspiral
+    - python-lalmetaio
+    - python-lalsimulation
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
@@ -128,6 +134,7 @@ test:
     - ligo.skymap.util.numpy
     - ligo.skymap.util.sqlite
   requires:
+    - lalapps
     - pytest
   commands:
     - python -m pytest --pyargs "ligo.skymap"
