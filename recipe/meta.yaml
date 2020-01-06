@@ -1,13 +1,13 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.14" %}
-{% set sha256 = "a32ef639d2460d3214af49d91c6c6bbb4103ddf716d8a8b16e8beb039c65e51f" %}
+{% set version = "0.1.15" %}
+{% set sha256 = "c45cde53dd75463bfaf31377d9a43d82441b41d7e1bfec253d85e2b0fdc1251b" %}
 
 package:
-  name: {{ name }}
-  version: {{ version }}
+  name: "{{ name|lower }}"
+  version: "{{ version }}"
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
   sha256: {{ sha256 }}
   patches:
     # tell ah_bootstrap to not download anything
@@ -16,6 +16,8 @@ source:
     - requirements-no-lalsuite.patch
 
 build:
+  error_overdepending: true
+  error_overlinking: true
   number: 0
   skip: true  # [win or py<36]
   script: "{{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries"
@@ -42,14 +44,14 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - pkg-config
     - llvm-openmp  # [osx]
+    - pkg-config
   host:
     - chealpix
     - gsl
     - libcblas
     - llvm-openmp  # [osx]
-    - numpy 1.14.*
+    - numpy
     - pip
     - python
     - setuptools
@@ -57,7 +59,6 @@ requirements:
     - astroplan >=0.5
     - astropy >=3.1
     - astropy-healpix >=0.3
-    - astroquery
     - chealpix
     - gsl
     - healpy
@@ -74,10 +75,10 @@ requirements:
     - pillow >=2.5.0
     - ptemcee
     - python
-    - python-lal
-    - python-lalinspiral
-    - python-lalmetaio
-    - python-lalsimulation
+    - python-lal >=6.19.2
+    - python-lalinspiral >=1.8.1
+    - python-lalmetaio >=1.5.0
+    - python-lalsimulation >=1.8.2
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
@@ -134,6 +135,7 @@ test:
     - ligo.skymap.util.numpy
     - ligo.skymap.util.sqlite
   requires:
+    #- astroquery
     - lalapps
     - pytest
   commands:
@@ -158,13 +160,13 @@ test:
     - ligo-skymap-stats --help
 
 about:
-  home: https://lscsoft.docs.ligo.org/ligo.skymap/
-  doc_url: https://lscsoft.docs.ligo.org/ligo.skymap/
-  dev_url: https://git.ligo.org/lscsoft/ligo.skymap
-  license: GPLv2
-  license_family: GPL
-  license_file: LICENSE.rst
-  summary: Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps
+  home: "https://lscsoft.docs.ligo.org/ligo.skymap/"
+  doc_url: "https://lscsoft.docs.ligo.org/ligo.skymap/"
+  dev_url: "https://git.ligo.org/lscsoft/ligo.skymap"
+  license: "GPL-2.0-or-later"
+  license_family: "GPL"
+  license_file: "LICENSE.rst"
+  summary: "Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps"
   description: |
     The `ligo.skymap` package provides tools for reading, writing, generating,
     and visualizing gravitational-wave probability maps from LIGO and Virgo.

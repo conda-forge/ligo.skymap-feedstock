@@ -3,7 +3,7 @@ About ligo.skymap
 
 Home: https://lscsoft.docs.ligo.org/ligo.skymap/
 
-Package license: GPLv2
+Package license: GPL-2.0-or-later
 
 Feedstock license: BSD 3-Clause
 
