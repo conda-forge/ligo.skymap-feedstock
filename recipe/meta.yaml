@@ -50,6 +50,7 @@ requirements:
     - chealpix
     - gsl
     - libcblas
+    - libgomp  # [linux and not aarch64]
     - llvm-openmp  # [osx]
     - numpy
     - pip
