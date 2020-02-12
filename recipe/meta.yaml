@@ -18,7 +18,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 0
+  number: 1
   skip: true  # [win or py<36]
   script: "{{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries"
   entry_points:
