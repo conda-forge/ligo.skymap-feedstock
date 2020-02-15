@@ -18,7 +18,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 2
   skip: true  # [win or py<36]
   script: "{{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries"
   entry_points:
@@ -70,7 +70,7 @@ requirements:
     - ligo-segments >=1.2.0
     - llvm-openmp  # [osx]
     - lscsoft-glue >=2.0.0
-    - matplotlib >=3.0.2
+    - matplotlib-base >=3.0.2
     - networkx
     - {{ pin_compatible('numpy') }}
     - pillow >=2.5.0
