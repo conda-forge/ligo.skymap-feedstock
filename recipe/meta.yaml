@@ -1,13 +1,13 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.15" %}
-{% set sha256 = "c45cde53dd75463bfaf31377d9a43d82441b41d7e1bfec253d85e2b0fdc1251b" %}
+{% set version = "0.1.16" %}
+{% set sha256 = "033d09c928585d5bf5fa164b9843ab29ccca1ecb158ea02cc18b15c49fdd3afe" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     # tell ah_bootstrap to not download anything
@@ -18,9 +18,9 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 1
+  number: 0
   skip: true  # [win or py<36]
-  script: "{{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries"
+  script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
   entry_points:
     - bayestar-localize-coincs = ligo.skymap.tool.bayestar_localize_coincs:main
     - bayestar-localize-lvalert = ligo.skymap.tool.bayestar_localize_lvalert:main
@@ -161,13 +161,13 @@ test:
     - ligo-skymap-stats --help
 
 about:
-  home: "https://lscsoft.docs.ligo.org/ligo.skymap/"
-  doc_url: "https://lscsoft.docs.ligo.org/ligo.skymap/"
-  dev_url: "https://git.ligo.org/lscsoft/ligo.skymap"
-  license: "GPL-2.0-or-later"
-  license_family: "GPL"
-  license_file: "LICENSE.rst"
-  summary: "Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps"
+  home: https://lscsoft.docs.ligo.org/ligo.skymap/
+  doc_url: https://lscsoft.docs.ligo.org/ligo.skymap/
+  dev_url: https://git.ligo.org/lscsoft/ligo.skymap
+  license: GPL-2.0-or-later
+  license_family: GPL
+  license_file: LICENSE.rst
+  summary: Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps
   description: |
     The `ligo.skymap` package provides tools for reading, writing, generating,
     and visualizing gravitational-wave probability maps from LIGO and Virgo.
