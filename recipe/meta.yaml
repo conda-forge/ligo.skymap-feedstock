@@ -16,11 +16,6 @@ source:
     - requirements-no-lalsuite.patch
 
 build:
-  error_overdepending: true
-  error_overlinking: true
-  number: 0
-  skip: true  # [win or py<36]
-  script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
   entry_points:
     - bayestar-localize-coincs = ligo.skymap.tool.bayestar_localize_coincs:main
     - bayestar-localize-lvalert = ligo.skymap.tool.bayestar_localize_lvalert:main
@@ -40,6 +35,13 @@ build:
     - ligo-skymap-plot-stats = ligo.skymap.tool.ligo_skymap_plot_stats:main
     - ligo-skymap-plot-volume = ligo.skymap.tool.ligo_skymap_plot_volume:main
     - ligo-skymap-stats = ligo.skymap.tool.ligo_skymap_stats:main
+  error_overdepending: true
+  error_overlinking: true
+  ignore_run_exports:
+    - python
+  number: 0
+  script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
+  skip: true  # [win or py<36]
 
 requirements:
   build:
@@ -136,7 +138,6 @@ test:
     - ligo.skymap.util.numpy
     - ligo.skymap.util.sqlite
   requires:
-    #- astroquery
     - lalapps
     - pytest
   commands:
