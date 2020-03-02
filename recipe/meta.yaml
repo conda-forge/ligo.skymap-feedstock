@@ -39,7 +39,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
   skip: true  # [win or py<36]
 
@@ -165,7 +165,7 @@ about:
   home: https://lscsoft.docs.ligo.org/ligo.skymap/
   doc_url: https://lscsoft.docs.ligo.org/ligo.skymap/
   dev_url: https://git.ligo.org/lscsoft/ligo.skymap
-  license: GPL-2.0-or-later
+  license: GPL-3.0-or-later
   license_family: GPL
   license_file: LICENSE.rst
   summary: Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps
