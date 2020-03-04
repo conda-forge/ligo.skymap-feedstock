@@ -40,7 +40,9 @@ build:
   ignore_run_exports:
     - python
   number: 1
-  script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
+  script:
+    - export CFLAGS="${CFLAGS} -O3"
+    - {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
   skip: true  # [win or py<36]
 
 requirements:
