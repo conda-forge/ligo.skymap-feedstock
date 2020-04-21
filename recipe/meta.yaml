@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.16" %}
-{% set sha256 = "033d09c928585d5bf5fa164b9843ab29ccca1ecb158ea02cc18b15c49fdd3afe" %}
+{% set version = "0.2.0" %}
+{% set sha256 = "ab66bee0b21d9f7d6180a89c6b94d7a5a1e8ccffa7089e92b60c379bc9259cc6" %}
 
 package:
   name: {{ name|lower }}
@@ -39,7 +39,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
   skip: true  # [win or py<36]
 
