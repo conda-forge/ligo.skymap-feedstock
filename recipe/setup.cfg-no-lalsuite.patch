@@ -1,0 +1,10 @@
+--- setup.cfg	2020-04-21 13:17:39.000000000 +0100
++++ setup.cfg	2020-05-01 10:23:43.000000000 +0100
+@@ -42,7 +42,6 @@
+     astropy-healpix>=0.3  # https://github.com/astropy/astropy-healpix/pull/106
+     healpy
+     h5py
+-    lalsuite>=6.53
+     lscsoft-glue>=2.0.0
+     ligo-gracedb>=2.0.1
+     ligo-segments>=1.2.0

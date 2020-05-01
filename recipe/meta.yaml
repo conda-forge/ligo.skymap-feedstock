@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.1.16" %}
-{% set sha256 = "033d09c928585d5bf5fa164b9843ab29ccca1ecb158ea02cc18b15c49fdd3afe" %}
+{% set version = "0.2.0" %}
+{% set sha256 = "ab66bee0b21d9f7d6180a89c6b94d7a5a1e8ccffa7089e92b60c379bc9259cc6" %}
 
 package:
   name: {{ name|lower }}
@@ -13,10 +13,11 @@ source:
     # tell ah_bootstrap to not download anything
     - setup.cfg-offline.patch
     # remove lalsuite requirement, since we can list dependencies explicitly here
-    - requirements-no-lalsuite.patch
+    - setup.cfg-no-lalsuite.patch
 
 build:
   entry_points:
+    - bayestar-inject = ligo.skymap.tool.bayestar_inject:main
     - bayestar-localize-coincs = ligo.skymap.tool.bayestar_localize_coincs:main
     - bayestar-localize-lvalert = ligo.skymap.tool.bayestar_localize_lvalert:main
     - bayestar-mcmc = ligo.skymap.tool.bayestar_mcmc:main
@@ -24,6 +25,7 @@ build:
     - bayestar-sample-model-psd = ligo.skymap.tool.bayestar_sample_model_psd:main
     - ligo-skymap-combine = ligo.skymap.tool.ligo_skymap_combine:main
     - ligo-skymap-contour = ligo.skymap.tool.ligo_skymap_contour:main
+    - ligo-skymap-contour-moc = ligo.skymap.tool.ligo_skymap_contour_moc:main
     - ligo-skymap-flatten = ligo.skymap.tool.ligo_skymap_flatten:main
     - ligo-skymap-unflatten = ligo.skymap.tool.ligo_skymap_unflatten:main
     - ligo-skymap-from-samples = ligo.skymap.tool.ligo_skymap_from_samples:main
@@ -39,7 +41,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
   skip: true  # [win or py<36]
 
@@ -60,7 +62,7 @@ requirements:
     - setuptools
   run:
     - astroplan >=0.5
-    - astropy >=3.1
+    - astropy >=3.1,!=4.0.1
     - astropy-healpix >=0.3
     - chealpix
     - gsl
@@ -82,6 +84,7 @@ requirements:
     - python-lalinspiral >=1.8.1
     - python-lalmetaio >=1.5.0
     - python-lalsimulation >=1.8.2
+    - python-ligo-lw
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
@@ -97,6 +100,7 @@ test:
     - ligo.skymap.bayestar.filter
     - ligo.skymap.bayestar.interpolation
     - ligo.skymap.bayestar.ptemcee
+    - ligo.skymap.conftest
     - ligo.skymap.coordinates
     - ligo.skymap.coordinates.detector
     - ligo.skymap.coordinates.eigenframe
@@ -123,25 +127,30 @@ test:
     - ligo.skymap.plot.backdrop
     - ligo.skymap.plot.cmap
     - ligo.skymap.plot.cylon
+    - ligo.skymap.plot.itrs_frame_monkeypatch
     - ligo.skymap.plot.marker
     - ligo.skymap.plot.poly
     - ligo.skymap.plot.pp
+    - ligo.skymap.plot.setup_package
     - ligo.skymap.plot.util
     - ligo.skymap.postprocess
     - ligo.skymap.postprocess.contour
     - ligo.skymap.postprocess.cosmology
+    - ligo.skymap.postprocess.crossmatch
     - ligo.skymap.postprocess.ellipse
-    - ligo.skymap.postprocess.find_injection
     - ligo.skymap.postprocess.util
     - ligo.skymap.util
     - ligo.skymap.util.file
     - ligo.skymap.util.numpy
+    - ligo.skymap.util.progress
     - ligo.skymap.util.sqlite
+    - ligo.skymap.version
   requires:
     - lalapps
     - pytest
   commands:
     - python -m pytest --pyargs "ligo.skymap"
+    - bayestar-inject --help
     - bayestar-localize-coincs --help
     - bayestar-localize-lvalert --help
     - bayestar-mcmc --help
@@ -149,6 +158,7 @@ test:
     - bayestar-sample-model-psd --help
     - ligo-skymap-combine --help
     - ligo-skymap-contour --help
+    - ligo-skymap-contour-moc --help
     - ligo-skymap-flatten --help
     - ligo-skymap-unflatten --help
     - ligo-skymap-from-samples --help
