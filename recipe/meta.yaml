@@ -68,6 +68,7 @@ requirements:
     - gsl
     - healpy
     - h5py
+    - importlib_resources  # [py<37]
     - libcblas
     - ligo-common
     - ligo-gracedb >=2.0.1
@@ -88,8 +89,6 @@ requirements:
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
-    - seaborn >=0.8.0
-    - setuptools
     - tqdm
 
 test:
