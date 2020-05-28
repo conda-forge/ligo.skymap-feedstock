@@ -91,6 +91,9 @@ requirements:
     - reproject >=0.3.2
     - scipy >=0.14
     - tqdm
+requirements:
+  run_constrained:
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
   imports:
