@@ -43,7 +43,7 @@ build:
     - python
   number: 0
   script:
-    - LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
+    - LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
 
 requirements:
