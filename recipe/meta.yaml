@@ -13,7 +13,7 @@ source:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
     # workaround for missing alloc_aligned
-    - 0001-Add-workaround-for-aligned_alloc-missing-on-old-vers.patch  # [osx]
+    - 0001-Use-posix_memalign-instead-of-aligned_alloc.patch
 
 build:
   entry_points:

@@ -1,0 +1,29 @@
+From 7415b858a916009a86505a8b8f534359a85dcaf2 Mon Sep 17 00:00:00 2001
+From: Leo Singer <leo.singer@ligo.org>
+Date: Thu, 28 May 2020 09:48:22 -0400
+Subject: [PATCH] Use posix_memalign instead of aligned_alloc
+
+Ancient versions of macOS have posix_memalign but not aligned_alloc.
+---
+ src/cubic_interp.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/src/cubic_interp.c b/src/cubic_interp.c
+index c6922a7..316a33c 100644
+--- a/src/cubic_interp.c
++++ b/src/cubic_interp.c
+@@ -136,8 +136,9 @@ bicubic_interp *bicubic_interp_init(
+     bicubic_interp *interp;
+     const int slength = ns + 6;
+     const int tlength = nt + 6;
+-    interp = aligned_alloc(alignof(bicubic_interp), sizeof(*interp) + slength * tlength * sizeof(*interp->a));
+-    if (LIKELY(interp))
++    /* FIXME: C11's aligned_alloc would be preferable here to posix_memalign,
++     * but ancient versions of macOS do not have it. */
++    if (LIKELY(!posix_memalign(&interp, alignof(bicubic_interp), sizeof(*interp) + slength * tlength * sizeof(*interp->a))))
+     {
+         interp->fx[0] = 1 / ds;
+         interp->fx[1] = 1 / dt;
+-- 
+2.26.2
+
