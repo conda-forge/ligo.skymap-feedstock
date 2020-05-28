@@ -1,0 +1,35 @@
+From 6850212b37ab07955ba997615d53717bad3bc59c Mon Sep 17 00:00:00 2001
+From: Leo Singer <leo.singer@ligo.org>
+Date: Thu, 28 May 2020 09:48:22 -0400
+Subject: [PATCH] Add workaround for aligned_alloc missing on old versions of
+ macOS
+
+---
+ src/cubic_interp.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/cubic_interp.c b/src/cubic_interp.c
+index c6922a7..18f078c 100644
+--- a/src/cubic_interp.c
++++ b/src/cubic_interp.c
+@@ -24,6 +24,17 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++/* aligned_alloc is missing on old versions of macOS. */
++#ifndef _ISOC11_SOURCE
++void *aligned_alloc(size_t alignment, size_t size)
++{
++    void *result;
++    if (posix_memalign(&result, alignment, size))
++        result = NULL;
++    return result;
++}
++#endif
++
+ /* Allow contraction of a * b + c to a faster fused multiply-add operation.
+  * This pragma is supposedly standard C, but only clang seems to support it.
+  * On other compilers, floating point contraction is ON by default at -O3. */
+-- 
+2.26.2
+

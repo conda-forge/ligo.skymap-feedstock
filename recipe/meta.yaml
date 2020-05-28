@@ -12,6 +12,8 @@ source:
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
+    # workaround for missing alloc_aligned
+    - 0001-Add-workaround-for-aligned_alloc-missing-on-old-vers.patch
 
 build:
   entry_points:
