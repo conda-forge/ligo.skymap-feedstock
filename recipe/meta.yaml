@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.2.2" %}
-{% set sha256 = "b6c5c99f24806e4212e4317025ccf38cecc967a4fbc8ce8e8b178e3014f5036c" %}
+{% set version = "0.3.1" %}
+{% set sha256 = "b8305fb893ce80faf8197688aef028fe07ec0c498304652dbfc142d02f9d871b" %}
 
 package:
   name: {{ name|lower }}
@@ -10,8 +10,6 @@ source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    # tell ah_bootstrap to not download anything
-    - setup.cfg-offline.patch
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
 
@@ -42,8 +40,9 @@ build:
   ignore_run_exports:
     - python
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --install-option=--use-system-libraries
-  skip: true  # [win or py<36]
+  script:
+    - LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
+  skip: true  # [win]
 
 requirements:
   build:
@@ -52,6 +51,7 @@ requirements:
     - pkg-config
   host:
     - chealpix
+    - extension-helpers
     - gsl
     - libcblas
     - libgomp  # [linux and not aarch64]
@@ -60,6 +60,7 @@ requirements:
     - pip
     - python
     - setuptools
+    - setuptools_scm
   run:
     - astroplan >=0.5
     - astropy >=3.1,!=4.0.1
@@ -130,7 +131,6 @@ test:
     - ligo.skymap.plot.marker
     - ligo.skymap.plot.poly
     - ligo.skymap.plot.pp
-    - ligo.skymap.plot.setup_package
     - ligo.skymap.plot.util
     - ligo.skymap.postprocess
     - ligo.skymap.postprocess.contour
