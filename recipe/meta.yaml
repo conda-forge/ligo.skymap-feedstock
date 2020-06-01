@@ -39,9 +39,9 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
-  number: 0
+  number: 1
   script:
-    - LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
+    - CFLAGS="${CFLAGS} -O3 -flto" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
 
 requirements:
