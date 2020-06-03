@@ -39,7 +39,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
-  number: 2
+  number: 3
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
@@ -185,8 +185,6 @@ about:
   description: |
     The `ligo.skymap` package provides tools for reading, writing, generating,
     and visualizing gravitational-wave probability maps from LIGO and Virgo.
-    It provides several tools that used to live in LALSuite and elsewhere,
-    but in the form of a tiny Python package that is easier to install.
 
 extra:
   recipe-maintainers:
