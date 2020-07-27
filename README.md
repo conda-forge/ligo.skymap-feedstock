@@ -5,14 +5,12 @@ Home: https://lscsoft.docs.ligo.org/ligo.skymap/
 
 Package license: GPL-3.0-or-later
 
-Feedstock license: BSD 3-Clause
+Feedstock license: BSD-3-Clause
 
 Summary: Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps
 
 The `ligo.skymap` package provides tools for reading, writing, generating,
 and visualizing gravitational-wave probability maps from LIGO and Virgo.
-It provides several tools that used to live in LALSuite and elsewhere,
-but in the form of a tiny Python package that is easier to install.
 
 
 Current build status
@@ -187,4 +185,5 @@ Feedstock Maintainers
 =====================
 
 * [@duncanmmacleod](https://github.com/duncanmmacleod/)
+* [@lpsinger](https://github.com/lpsinger/)
 
