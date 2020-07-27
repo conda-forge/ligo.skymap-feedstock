@@ -105,7 +105,7 @@ test:
     - ligo.skymap.coordinates.eigenframe
     - ligo.skymap.distance
     - ligo.skymap.extern
-    - ligo.skymap.extern.quantile
+    - ligo.skymap.extern.numpy.quantile
     - ligo.skymap.healpix_tree
     - ligo.skymap.io
     - ligo.skymap.io.events
