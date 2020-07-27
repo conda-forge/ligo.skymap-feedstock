@@ -1,10 +1,12 @@
---- setup.cfg	2020-05-27 01:23:05.000000000 +0100
-+++ setup.cfg.2	2020-05-27 08:49:25.000000000 +0100
-@@ -42,7 +42,6 @@
- 	healpy
- 	h5py
- 	importlib-resources;python_version<'3.7'
--	lalsuite>=6.53
- 	lscsoft-glue>=2.0.0
- 	ligo-gracedb>=2.0.1
- 	ligo-segments>=1.2.0
+diff --git a/setup.cfg b/setup.cfg
+index 78ff571..35a358d 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -44,7 +44,6 @@ install_requires =
+     healpy
+     h5py
+     importlib-resources;python_version<'3.7'
+-    lalsuite>=6.53
+     ligo-gracedb>=2.0.1
+     ligo-segments>=1.2.0
+     matplotlib>=3.0.2

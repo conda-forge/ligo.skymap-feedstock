@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.3.1" %}
-{% set sha256 = "b8305fb893ce80faf8197688aef028fe07ec0c498304652dbfc142d02f9d871b" %}
+{% set version = "0.4.0" %}
+{% set sha256 = "f381b8d8cf7c5a221b7d7288155917d5bbfd31e878de69d3e83c7ead00d9fc52" %}
 
 package:
   name: {{ name|lower }}
@@ -39,7 +39,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
-  number: 3
+  number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win]
@@ -75,7 +75,6 @@ requirements:
     - ligo-gracedb >=2.0.1
     - ligo-segments >=1.2.0
     - llvm-openmp  # [osx]
-    - lscsoft-glue >=2.0.0
     - matplotlib >=3.0.2
     - networkx
     - {{ pin_compatible('numpy') }}
@@ -90,7 +89,7 @@ requirements:
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
-    - tqdm
+    - tqdm >=4.27.0
 
 test:
   imports:
@@ -106,7 +105,7 @@ test:
     - ligo.skymap.coordinates.eigenframe
     - ligo.skymap.distance
     - ligo.skymap.extern
-    - ligo.skymap.extern.quantile
+    - ligo.skymap.extern.numpy.quantile
     - ligo.skymap.healpix_tree
     - ligo.skymap.io
     - ligo.skymap.io.events
