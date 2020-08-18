@@ -60,6 +60,7 @@ requirements:
     - gsl
     - libcblas
     - intel-openmp
+    - llvm-openmp
     - numpy
     - pip
     - python
