@@ -53,7 +53,6 @@ requirements:
     - gsl
     - libcblas
     - intel-openmp
-    - icc_rt
     - llvm-openmp
     - numpy
     - pip
@@ -74,7 +73,6 @@ requirements:
     - ligo-gracedb >=2.0.1
     - ligo-segments >=1.2.0
     - intel-openmp
-    - icc_rt
     - matplotlib >=3.0.2
     - networkx
     - {{ pin_compatible('numpy') }}
