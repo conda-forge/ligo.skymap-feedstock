@@ -47,7 +47,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
-    - llvm-openmp  # [osx]
+    - clangdev
     - pkg-config
   host:
     - chealpix
