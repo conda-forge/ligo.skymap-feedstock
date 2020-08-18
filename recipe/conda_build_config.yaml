@@ -1,0 +1,2 @@
+channel_sources:
+  - intel,conda-forge,defaults

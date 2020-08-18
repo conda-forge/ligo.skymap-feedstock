@@ -1,8 +1,1 @@
 conda_forge_output_validation: true
-channels:
-  sources:
-    - intel
-    - conda-forge
-    - defaults
-  targets:
-    - ["conda-forge", "main"]
