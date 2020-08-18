@@ -39,6 +39,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
+    - _openmp_mutex
   number: 0
   skip: true  # [win]
 
