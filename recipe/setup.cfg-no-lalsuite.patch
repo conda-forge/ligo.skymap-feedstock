@@ -3,10 +3,10 @@ index 78ff571..35a358d 100644
 --- a/setup.cfg
 +++ b/setup.cfg
 @@ -44,7 +44,6 @@ install_requires =
-     healpy
-     h5py
-     importlib-resources;python_version<'3.7'
--    lalsuite>=6.53
-     ligo-gracedb>=2.0.1
-     ligo-segments>=1.2.0
-     matplotlib>=3.0.2
+ 	healpy
+ 	h5py
+ 	importlib-resources;python_version<'3.7'
+-	lalsuite>=6.53
+ 	ligo-gracedb>=2.0.1
+ 	ligo-segments>=1.2.0
+ 	matplotlib>=3.0.2
