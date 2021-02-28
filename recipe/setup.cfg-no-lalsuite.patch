@@ -1,12 +1,10 @@
-diff --git a/setup.cfg b/setup.cfg
-index 78ff571..35a358d 100644
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -44,7 +44,6 @@ install_requires =
-     healpy
-     h5py
-     importlib-resources;python_version<'3.7'
--    lalsuite>=6.53
-     ligo-gracedb>=2.0.1
-     ligo-segments>=1.2.0
-     matplotlib>=3.0.2
+--- setup.cfg.orig	2021-02-27 13:00:46.000000000 -0500
++++ setup.cfg	2021-02-28 12:02:11.000000000 -0500
+@@ -43,7 +43,6 @@
+ 	astropy-healpix>=0.3  # https://github.com/astropy/astropy-healpix/pull/106
+ 	healpy
+ 	h5py
+-	lalsuite>=6.82
+ 	ligo-gracedb>=2.0.1
+ 	ligo-segments>=1.2.0
+ 	matplotlib>=3.0.2
