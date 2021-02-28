@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "0.5.0" %}
-{% set sha256 = "67e0a47406ba822d9f51e616fd1146d72b7b997f3421501192cc0e1e7d7713d4" %}
+{% set version = "0.5.1" %}
+{% set sha256 = "7ef8b19722a69e1a0d9d4a0175b0eee8a5a8a1f500987d5586af0e68252ecbc1" %}
 
 package:
   name: {{ name|lower }}
@@ -42,7 +42,7 @@ build:
   number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
-  skip: true  # [win]
+  skip: true  # [win or py<37]
 
 requirements:
   build:
@@ -56,20 +56,19 @@ requirements:
     - libcblas
     - libgomp  # [linux and not aarch64]
     - llvm-openmp  # [osx]
-    - numpy
+    - numpy >=1.19.3
     - pip
     - python
     - setuptools
     - setuptools_scm
   run:
-    - astroplan >=0.5
-    - astropy >=3.1,!=4.0.1
+    - astroplan >=0.7
+    - astropy >=4.0.2,<4.1
     - astropy-healpix >=0.3
     - chealpix
     - gsl
     - healpy
     - h5py
-    - importlib_resources  # [py<37]
     - libcblas
     - ligo-common
     - ligo-gracedb >=2.0.1
@@ -81,10 +80,10 @@ requirements:
     - pillow >=2.5.0
     - ptemcee
     - python
-    - python-lal >=6.19.2
-    - python-lalinspiral >=1.8.1
-    - python-lalmetaio >=1.5.0
-    - python-lalsimulation >=1.8.2
+    - python-lal >=7.1.2
+    - python-lalinspiral >=2.0.2
+    - python-lalmetaio >=2.0.2
+    - python-lalsimulation >=2.5.1
     - python-ligo-lw
     - pytz
     - reproject >=0.3.2
@@ -126,7 +125,6 @@ test:
     - ligo.skymap.plot.backdrop
     - ligo.skymap.plot.cmap
     - ligo.skymap.plot.cylon
-    - ligo.skymap.plot.itrs_frame_monkeypatch
     - ligo.skymap.plot.marker
     - ligo.skymap.plot.poly
     - ligo.skymap.plot.pp
