@@ -125,7 +125,6 @@ test:
     - ligo.skymap.plot.backdrop
     - ligo.skymap.plot.cmap
     - ligo.skymap.plot.cylon
-    - ligo.skymap.plot.itrs_frame_monkeypatch
     - ligo.skymap.plot.marker
     - ligo.skymap.plot.poly
     - ligo.skymap.plot.pp
