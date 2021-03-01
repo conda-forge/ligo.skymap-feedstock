@@ -39,7 +39,7 @@ build:
   error_overlinking: true
   ignore_run_exports:
     - python
-  number: 1
+  number: 2
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<37]
@@ -56,7 +56,7 @@ requirements:
     - libcblas
     - libgomp  # [linux and not aarch64]
     - llvm-openmp  # [osx]
-    - numpy >=1.19.3
+    - numpy 1.19
     - pip
     - python
     - setuptools
