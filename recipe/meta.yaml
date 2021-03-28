@@ -92,61 +92,16 @@ requirements:
     - tqdm >=4.27.0
 
 test:
-  imports:
-    - ligo.skymap
-    - ligo.skymap.bayestar
-    - ligo.skymap.bayestar.ez_emcee
-    - ligo.skymap.bayestar.filter
-    - ligo.skymap.bayestar.interpolation
-    - ligo.skymap.bayestar.ptemcee
-    - ligo.skymap.conftest
-    - ligo.skymap.coordinates
-    - ligo.skymap.coordinates.detector
-    - ligo.skymap.coordinates.eigenframe
-    - ligo.skymap.distance
-    - ligo.skymap.extern
-    - ligo.skymap.extern.numpy.quantile
-    - ligo.skymap.healpix_tree
-    - ligo.skymap.io
-    - ligo.skymap.io.events
-    - ligo.skymap.io.events.base
-    - ligo.skymap.io.events.detector_disabled
-    - ligo.skymap.io.events.gracedb
-    - ligo.skymap.io.events.hdf
-    - ligo.skymap.io.events.ligolw
-    - ligo.skymap.io.events.magic
-    - ligo.skymap.io.events.sqlite
-    - ligo.skymap.io.fits
-    - ligo.skymap.io.hdf5
-    - ligo.skymap.kde
-    - ligo.skymap.moc
-    - ligo.skymap.plot
-    - ligo.skymap.plot.allsky
-    - ligo.skymap.plot.angle
-    - ligo.skymap.plot.backdrop
-    - ligo.skymap.plot.cmap
-    - ligo.skymap.plot.cylon
-    - ligo.skymap.plot.marker
-    - ligo.skymap.plot.poly
-    - ligo.skymap.plot.pp
-    - ligo.skymap.plot.util
-    - ligo.skymap.postprocess
-    - ligo.skymap.postprocess.contour
-    - ligo.skymap.postprocess.cosmology
-    - ligo.skymap.postprocess.crossmatch
-    - ligo.skymap.postprocess.ellipse
-    - ligo.skymap.postprocess.util
-    - ligo.skymap.util
-    - ligo.skymap.util.file
-    - ligo.skymap.util.numpy
-    - ligo.skymap.util.progress
-    - ligo.skymap.util.sqlite
-    - ligo.skymap.version
   requires:
     - lalapps
+    - pip
     - pytest
   commands:
-    - python -m pytest --pyargs "ligo.skymap"
+    # check dependencies
+    - python -m pip check
+    # run unit tests
+    - python -m pytest -ra --pyargs "ligo.skymap"
+    # sanity check entry points
     - bayestar-inject --help
     - bayestar-localize-coincs --help
     - bayestar-localize-lvalert --help
