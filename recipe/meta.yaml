@@ -64,7 +64,7 @@ requirements:
     - setuptools_scm
   run:
     - astroplan >=0.7
-    - astropy >=4.0.2,!=4.2
+    - astropy >=5.0
     - astropy-healpix >=0.3
     - chealpix
     - gsl
@@ -85,7 +85,7 @@ requirements:
     - python-lalinspiral >=2.0.2
     - python-lalmetaio >=2.0.2
     - python-lalsimulation >=2.5.1
-    - python-ligo-lw
+    - python-ligo-lw >=1.7.0, <=1.7.1
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
