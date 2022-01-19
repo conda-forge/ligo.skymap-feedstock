@@ -57,7 +57,7 @@ requirements:
     - libgomp  # [linux and not aarch64]
     - llvm-openmp  # [osx]
     - numpy 1.19.4  # [py<39]
-    - numpy !=1.22.0 # [py>=39]
+    - numpy !=1.22.0  # [py>=39]
     - pip
     - python
     - setuptools
