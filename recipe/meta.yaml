@@ -57,7 +57,7 @@ requirements:
     - libgomp  # [linux and not aarch64]
     - llvm-openmp  # [osx]
     - numpy 1.19.4  # [py<39]
-    - numpy !=1.22.0  # [py>=39]
+    - numpy  # [py>=39]
     - pip
     - python
     - setuptools
@@ -78,6 +78,7 @@ requirements:
     - matplotlib-base >=3.4.0
     - networkx
     - {{ pin_compatible('numpy') }}
+    - numpy >=1.19.3,!=1.22.0
     - pillow >=2.5.0
     - ptemcee
     - python
