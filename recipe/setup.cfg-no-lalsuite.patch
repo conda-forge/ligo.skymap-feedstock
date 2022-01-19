@@ -1,10 +1,10 @@
---- setup.cfg.orig
-+++ setup.cfg
-@@ -42,7 +42,6 @@ install_requires =
-     astropy-healpix>=0.3  # https://github.com/astropy/astropy-healpix/pull/106
-     healpy
-     h5py
--    lalsuite>=6.82, !=7.2  # https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/1757
-     ligo-gracedb>=2.0.1
-     ligo-segments>=1.2.0
-     matplotlib>=3.4.0  # https://github.com/matplotlib/matplotlib/issues/18832
+--- setup.cfg.orig	2022-01-18 23:55:16.000000000 -0500
++++ setup.cfg	2022-01-18 23:55:23.000000000 -0500
+@@ -42,7 +42,6 @@
+ 	astropy-healpix>=0.3  # https://github.com/astropy/astropy-healpix/pull/106
+ 	healpy
+ 	h5py
+-	lalsuite>=6.82, !=7.2  # https://git.ligo.org/lscsoft/lalsuite/-/merge_requests/1757
+ 	ligo-gracedb>=2.0.1
+ 	ligo-segments>=1.2.0
+ 	matplotlib>=3.4.0  # https://github.com/matplotlib/matplotlib/issues/18832
