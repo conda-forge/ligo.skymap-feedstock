@@ -57,7 +57,7 @@ requirements:
     - libgomp  # [linux and not aarch64]
     - llvm-openmp  # [osx]
     - numpy 1.19.4  # [py<39]
-    - numpy  # [py>=39]
+    - numpy !=1.22.0 # [py>=39]
     - pip
     - python
     - setuptools
@@ -83,9 +83,9 @@ requirements:
     - python
     - python-lal >=7.1.2
     - python-lalinspiral >=2.0.2
-    - python-lalmetaio >=2.0.2
+    - python-lalmetaio >=2.1.1
     - python-lalsimulation >=2.5.1
-    - python-ligo-lw >=1.7.0, <=1.7.1
+    - python-ligo-lw >=1.8.0
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14
