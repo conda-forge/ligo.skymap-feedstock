@@ -1,0 +1,25 @@
+diff --git a/setup.py b/setup.py
+index 6bb30c3..4f2bcc1 100755
+--- a/setup.py
++++ b/setup.py
+@@ -14,7 +14,8 @@ def get_extensions():
+     from distutils.core import Extension
+     import os
+
+-    from extension_helpers import add_openmp_flags_if_available, pkg_config
++    from extension_helpers import pkg_config
++    from extension_helpers._openmp_helpers import get_openmp_flags
+     import numpy as np
+
+     pkg_config_packages = ['gsl']
+@@ -52,7 +53,9 @@ def get_extensions():
+                           py_limited_api=True, sources=sources, **kwargs)
+
+     if not os.environ.get('LIGO_SKYMAP_DISABLE_OPENMP'):
+-        add_openmp_flags_if_available(extension)
++        openmp_flags = get_openmp_flags()
++        extension.extra_compile_args.extend(openmp_flags.get('compiler_flags'))
++        extension.extra_link_args.extend(openmp_flags.get('linker_flags'))
+
+     return [extension]
+
