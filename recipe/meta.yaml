@@ -12,6 +12,9 @@ source:
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
+    # don't use extension_helpers to detect openmp
+    # see https://git.ligo.org/lscsoft/ligo.skymap/-/issues/32
+    - openmp-flags.patch
 
 build:
   entry_points:
