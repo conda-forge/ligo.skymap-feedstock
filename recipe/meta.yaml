@@ -41,6 +41,7 @@ build:
   error_overdepending: true
   error_overlinking: true
   ignore_run_exports:
+    - numpy
     - python
   number: 0
   script:
