@@ -49,12 +49,14 @@ build:
 
 requirements:
   build:
-    - python                                 # [build_platform != target_platform]
-    - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-    - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
     - llvm-openmp  # [osx]
     - pkg-config
+    # cross-compiling:
+    - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+    - numpy                               # [build_platform != target_platform and py<39]
+    - numpy 1.22                          # [build_platform != target_platform and py>=39]
+    - python                              # [build_platform != target_platform]
   host:
     - chealpix
     - extension-helpers
@@ -62,8 +64,8 @@ requirements:
     - libcblas
     - libgomp  # [linux and not aarch64]
     - llvm-openmp  # [osx]
-    - numpy 1.19.4  # [py<39]
-    - numpy 1.22.2  # [py>=39]
+    - numpy  # [py<39]
+    - numpy 1.22  # [py>=39]
     - pip
     - python
     - setuptools
