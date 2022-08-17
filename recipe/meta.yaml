@@ -110,9 +110,9 @@ test:
     # check dependencies
     - python -m pip check
     # run unit tests
-    - export OMP_NUM_THREADS=1  # [unix]
-    - set OMP_NUM_THREADS="1"  # [win]
-    - python -m pytest -ra --pyargs "ligo.skymap"
+    - export OMP_NUM_THREADS={{ CPU_COUNT }}  # [unix]
+    - set OMP_NUM_THREADS="{{ CPU_COUNT }}"  # [win]
+    - python -m pytest -ra --pyargs "ligo.skymap" --omp-get-num-threads
     # sanity check entry points
     - bayestar-inject --help
     - bayestar-localize-coincs --help
