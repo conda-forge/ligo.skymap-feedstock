@@ -110,6 +110,8 @@ test:
     # check dependencies
     - python -m pip check
     # run unit tests
+    - export OMP_NUM_THREADS=1  # [unix]
+    - set OMP_NUM_THREADS="1"  # [win]
     - python -m pytest -ra --pyargs "ligo.skymap"
     # sanity check entry points
     - bayestar-inject --help
