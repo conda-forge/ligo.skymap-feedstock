@@ -112,7 +112,8 @@ test:
     # run unit tests
     - export OMP_NUM_THREADS={{ CPU_COUNT }}  # [unix]
     - set OMP_NUM_THREADS="{{ CPU_COUNT }}"  # [win]
-    - python -m pytest -ra --pyargs "ligo.skymap" --omp-get-num-threads
+    # Tests are too slow to complete on pp64le. Are they running under emulation?
+    - python -m pytest -ra --pyargs "ligo.skymap" --omp-get-num-threads  # [not ppc64le]
     # sanity check entry points
     - bayestar-inject --help
     - bayestar-localize-coincs --help
