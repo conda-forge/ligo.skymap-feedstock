@@ -112,7 +112,7 @@ test:
     # run unit tests
     - export OMP_NUM_THREADS={{ CPU_COUNT }}  # [unix]
     - set OMP_NUM_THREADS="{{ CPU_COUNT }}"  # [win]
-    - python -m pytest -ra --pyargs "ligo.skymap" --omp-get-num-threads
+    - python -m pytest -ra --pyargs "ligo.skymap" --omp-get-num-threads  # [build_platform == target_platform]
     # sanity check entry points
     - bayestar-inject --help
     - bayestar-localize-coincs --help
