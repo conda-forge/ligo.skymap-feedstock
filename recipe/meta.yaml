@@ -1,6 +1,6 @@
 {% set name = "ligo.skymap" %}
-{% set version = "1.0.0" %}
-{% set sha256 = "2223c9226f8063860d87d1a445fc57e7033f04ae5532b3759711bac7e44b9686" %}
+{% set version = "1.0.2" %}
+{% set sha256 = "6987e72d6b9931f7cd91901c78c3bcbb0697dcf15bf6cd767775ff4862e0d53e" %}
 
 package:
   name: {{ name|lower }}
@@ -43,7 +43,7 @@ build:
   ignore_run_exports:
     - numpy
     - python
-  number: 1
+  number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<38]
