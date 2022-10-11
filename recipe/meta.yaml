@@ -1,6 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "1.0.2" %}
-{% set sha256 = "6987e72d6b9931f7cd91901c78c3bcbb0697dcf15bf6cd767775ff4862e0d53e" %}
+{% set version = "1.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: 6c63a3f7bd858963f7dd1ccf29193bf761ede7eaf93eba2551c0e302ace7b8ec
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
@@ -70,8 +69,8 @@ requirements:
     - numpy 1.22  # [py>=39]
     - pip
     - python
-    - setuptools
-    - setuptools_scm
+    - setuptools >=42.0.0
+    - setuptools-scm
   run:
     - astroplan >=0.7
     - astropy >=5.0
