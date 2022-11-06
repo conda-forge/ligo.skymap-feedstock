@@ -42,7 +42,7 @@ build:
   ignore_run_exports:
     - numpy
     - python
-  number: 0
+  number: 1
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<38]
@@ -55,8 +55,8 @@ requirements:
     - pkg-config
     # cross-compiling:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - numpy                               # [build_platform != target_platform and py<39]
-    - numpy 1.22                          # [build_platform != target_platform and py>=39]
+    - numpy                               # [build_platform != target_platform and (py<39 or py>=311)]
+    - numpy 1.22                          # [build_platform != target_platform and 39<=py<311]
     - python                              # [build_platform != target_platform]
   host:
     - chealpix
@@ -65,8 +65,8 @@ requirements:
     - libcblas
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - numpy  # [py<39]
-    - numpy 1.22  # [py>=39]
+    - numpy  # [py<39 or py>=311]
+    - numpy 1.22  # [39<=py<311]
     - pip
     - python
     - setuptools >=42.0.0
