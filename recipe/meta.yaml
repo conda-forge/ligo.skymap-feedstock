@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "1.0.3" %}
+{% set version = "1.0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 6c63a3f7bd858963f7dd1ccf29193bf761ede7eaf93eba2551c0e302ace7b8ec
+  sha256: 41f42b4efde8c43e6c93413b107cb4e39d299d15d17ae9de45388d57723ffe3a
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
@@ -42,7 +42,7 @@ build:
   ignore_run_exports:
     - numpy
     - python
-  number: 1
+  number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<38]
