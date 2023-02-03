@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "1.0.5" %}
+{% set version = "1.0.6" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: ebd029784401ab0dd9e892c1a5a545a629d42d156e35cc649229b0161a79d7f8
+  sha256: 5aebaf8e24fe7c0b5d1b34a821f607fb5bd1249d5e8748c7c3e918b03bd990b6
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
