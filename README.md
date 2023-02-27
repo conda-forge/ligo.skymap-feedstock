@@ -1,11 +1,11 @@
-About ligo.skymap
-=================
+About ligo.skymap-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ligo.skymap-feedstock/blob/main/LICENSE.txt)
 
 Home: https://lscsoft.docs.ligo.org/ligo.skymap/
 
 Package license: GPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/ligo.skymap-feedstock/blob/main/LICENSE.txt)
 
 Summary: Tools for reading, writing, manipulating, and making LIGO and Virgo sky maps
 
