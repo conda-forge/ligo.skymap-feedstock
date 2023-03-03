@@ -97,7 +97,7 @@ requirements:
     - python-ligo-lw >=1.8.0
     - pytz
     - reproject >=0.3.2
-    - scipy >=0.14,<1.10.0a0
+    - scipy >=0.14,!=1.10.0
     - tqdm >=4.27.0
 
 test:
