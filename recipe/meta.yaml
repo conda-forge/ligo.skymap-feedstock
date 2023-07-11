@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "1.0.7" %}
+{% set version = "1.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 32f4462fed94801c659cdceb738ed17f5a07be98102f37a90913aaaabe01e7dc
+  sha256: cb52562e4f74b09564c642c500e5ea110a1ddbc8e7cfa070053f1f2c0063acd0
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
@@ -32,6 +32,7 @@ build:
     - ligo-skymap-constellations = ligo.skymap.tool.ligo_skymap_constellations:main
     - ligo-skymap-plot = ligo.skymap.tool.ligo_skymap_plot:main
     - ligo-skymap-plot-airmass = ligo.skymap.tool.ligo_skymap_plot_airmass:main
+    - ligo-skymap-plot-coherence = ligo.skymap.tool.ligo_skymap_plot_coherence:main
     - ligo-skymap-plot-observability = ligo.skymap.tool.ligo_skymap_plot_observability:main
     - ligo-skymap-plot-pp-samples = ligo.skymap.tool.ligo_skymap_plot_pp_samples:main
     - ligo-skymap-plot-stats = ligo.skymap.tool.ligo_skymap_plot_stats:main
@@ -45,7 +46,7 @@ build:
   number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
-  skip: true  # [win or py<38]
+  skip: true  # [win or py<39]
 
 requirements:
   build:
