@@ -84,7 +84,7 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.5.0
     - networkx
-    - numpy >=1.23.0
+    - numpy >=1.23.0, <2.0.0
     - pillow >=2.5.0
     - ptemcee
     - python
