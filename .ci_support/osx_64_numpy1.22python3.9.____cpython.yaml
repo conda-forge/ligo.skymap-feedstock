@@ -3,9 +3,13 @@ MACOSX_DEPLOYMENT_TARGET:
 c_compiler:
 - clang
 c_compiler_version:
-- '15'
+- '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.9'
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/numpy_dev
 channel_targets:
 - conda-forge main
 gsl:
@@ -13,7 +17,7 @@ gsl:
 libcblas:
 - 3.9 *netlib
 llvm_openmp:
-- '15'
+- '16'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 numpy:

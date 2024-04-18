@@ -1,19 +1,22 @@
 {% set name = "ligo.skymap" %}
-{% set version = "1.1.2" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e50e94a4dfa90759c18e71cf55c698eaae542ba7dbb50650febe471bb6ffc2a1
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
+  sha256: 798097c18cd87513253b27757d77cc4da74e34167bcd00b8e1849642023260fa
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
     # don't use extension_helpers to detect openmp
     # see https://git.ligo.org/lscsoft/ligo.skymap/-/issues/32
     - openmp-flags.patch
+    # Use posix_memalign instead of aligned_alloc on macOS because aligned_alloc
+    # requires macOS >= 10.15 and Conda currently supports macOS >= 10.13
+    - posix_memalign.patch  # [osx]
 
 build:
   entry_points:
@@ -56,8 +59,7 @@ requirements:
     - pkg-config
     # cross-compiling:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - numpy                               # [build_platform != target_platform and (py<39 or py>=311)]
-    - numpy 1.22                          # [build_platform != target_platform and 39<=py<311]
+    - numpy >=2.0.0rc1                    # [build_platform != target_platform]
     - python                              # [build_platform != target_platform]
   host:
     - chealpix
@@ -66,12 +68,11 @@ requirements:
     - libcblas
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - numpy  # [py<39 or py>=311]
-    - numpy 1.22  # [39<=py<311]
+    - numpy >=2.0.0rc1
     - pip
     - python
-    - setuptools >=42.0.0
-    - setuptools-scm
+    - setuptools >=64
+    - setuptools-scm >=8
   run:
     - astroplan >=0.7
     - astropy >=5.0
@@ -86,8 +87,7 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.5.0
     - networkx
-    - {{ pin_compatible('numpy') }}
-    - numpy >=1.19.3,!=1.22.0
+    - numpy >=1.23.0
     - pillow >=2.5.0
     - ptemcee
     - python
