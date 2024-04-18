@@ -1,0 +1,4 @@
+# Build against Numpy 2.0.0rc1.
+# Delete this file once Numpy 2.0.0 is out.
+channel_sources:
+  - conda-forge,conda-forge/label/numpy_dev
