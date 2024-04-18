@@ -56,8 +56,7 @@ requirements:
     - pkg-config
     # cross-compiling:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - numpy                               # [build_platform != target_platform and (py<39 or py>=311)]
-    - numpy 1.22                          # [build_platform != target_platform and 39<=py<311]
+    - numpy >=2.0.0a0                     # [build_platform != target_platform]
     - python                              # [build_platform != target_platform]
   host:
     - chealpix
@@ -66,12 +65,11 @@ requirements:
     - libcblas
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - numpy  # [py<39 or py>=311]
-    - numpy 1.22  # [39<=py<311]
+    - numpy >=2.0.0a0
     - pip
     - python
-    - setuptools >=42.0.0
-    - setuptools-scm
+    - setuptools >=64
+    - setuptools-scm >=8
   run:
     - astroplan >=0.7
     - astropy >=5.0
@@ -86,8 +84,7 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.5.0
     - networkx
-    - {{ pin_compatible('numpy') }}
-    - numpy >=1.19.3,!=1.22.0
+    - numpy >=1.23.0
     - pillow >=2.5.0
     - ptemcee
     - python
