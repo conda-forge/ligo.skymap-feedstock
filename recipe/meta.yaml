@@ -68,7 +68,7 @@ requirements:
     - libcblas
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - numpy >=2.0.0a0
+    - numpy >=2.0.0rc1
     - pip
     - python
     - setuptools >=64
