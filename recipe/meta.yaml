@@ -14,6 +14,9 @@ source:
     # don't use extension_helpers to detect openmp
     # see https://git.ligo.org/lscsoft/ligo.skymap/-/issues/32
     - openmp-flags.patch
+    # Use posix_memalign instead of aligned_alloc on macOS because aligned_alloc
+    # requires macOS >= 10.15 and Conda currently supports macOS >= 10.13
+    - posix_memalign.patch  # [osx]
 
 build:
   entry_points:
