@@ -54,6 +54,7 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}
+    - {{ stdlib('c') }}
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
     - pkg-config
