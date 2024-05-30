@@ -49,7 +49,7 @@ build:
   number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
-  skip: true  # [win or py<39]
+  skip: true  # [win or py<310]
 
 requirements:
   build:
