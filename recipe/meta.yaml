@@ -42,6 +42,9 @@ build:
     - ligo-skymap-plot-volume = ligo.skymap.tool.ligo_skymap_plot_volume:main
     - ligo-skymap-stats = ligo.skymap.tool.ligo_skymap_stats:main
   error_overlinking: true
+  missing_dso_whitelist:
+    # https://github.com/conda/conda-build/issues/5403
+    - $RPATH/ld64.so.2  # [ppc64le]
   number: 1
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
