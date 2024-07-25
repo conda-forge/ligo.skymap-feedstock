@@ -41,11 +41,7 @@ build:
     - ligo-skymap-plot-stats = ligo.skymap.tool.ligo_skymap_plot_stats:main
     - ligo-skymap-plot-volume = ligo.skymap.tool.ligo_skymap_plot_volume:main
     - ligo-skymap-stats = ligo.skymap.tool.ligo_skymap_stats:main
-  error_overdepending: true
   error_overlinking: true
-  ignore_run_exports:
-    - numpy
-    - python
   number: 1
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
@@ -60,7 +56,7 @@ requirements:
     - pkg-config
     # cross-compiling:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - numpy >=2.0.0rc1                    # [build_platform != target_platform]
+    - numpy                               # [build_platform != target_platform]
     - python                              # [build_platform != target_platform]
   host:
     - chealpix
@@ -69,7 +65,7 @@ requirements:
     - libcblas
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - numpy >=2.0.0rc1
+    - numpy
     - pip
     - python
     - setuptools >=64
