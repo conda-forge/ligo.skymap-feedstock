@@ -10,7 +10,7 @@ source:
   sha256: 0efc6c41fc71810a4a7a154b6501411a38c190b7e2a5c8eae0174cf0277499d0
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
-    - setup.cfg-no-lalsuite.patch
+    - pyproject.toml-no-lalsuite.patch
     # don't use extension_helpers to detect openmp
     # see https://git.ligo.org/lscsoft/ligo.skymap/-/issues/32
     - openmp-flags.patch

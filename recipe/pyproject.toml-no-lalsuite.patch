@@ -1,0 +1,10 @@
+--- pyproject.toml.orig	2024-08-23 12:17:26
++++ pyproject.toml	2024-08-23 12:17:32
+@@ -37,7 +37,6 @@
+     "astropy-healpix>=0.3",  # https://github.com/astropy/astropy-healpix/pull/106
+     "healpy",
+     "h5py",
+-    "lalsuite>=6.82, !=7.2",
+     "ligo-gracedb>=2.0.1",
+     "ligo-segments>=1.2.0",
+     "matplotlib>=3.5.0",  # https://matplotlib.org/stable/api/prev_api_changes/api_changes_3.6.0.html#pending-deprecation-top-level-cmap-registration-and-access-functions-in-mpl-cm
