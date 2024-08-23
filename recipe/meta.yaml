@@ -87,7 +87,7 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.5.0
     - networkx
-    - numpy >=1.23.0
+    - numpy >=2.0.0
     - pillow >=2.5.0
     - ptemcee
     - python
@@ -99,6 +99,7 @@ requirements:
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14,!=1.10.0
+    - shapely >=2.0.0
     - tqdm >=4.27.0
 
 test:
