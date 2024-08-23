@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "2.0.1" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
-  sha256: 0cbeaeeb0361675250e8b9534698845c54ce6b7b2091e4cb612f3f736f9b0a5c
+  sha256: 0efc6c41fc71810a4a7a154b6501411a38c190b7e2a5c8eae0174cf0277499d0
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - setup.cfg-no-lalsuite.patch
@@ -45,7 +45,7 @@ build:
   missing_dso_whitelist:
     # https://github.com/conda/conda-build/issues/5403
     - $RPATH/ld64.so.2  # [ppc64le]
-  number: 1
+  number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<310]
