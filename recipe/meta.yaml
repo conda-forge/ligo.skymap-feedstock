@@ -91,10 +91,10 @@ requirements:
     - pillow >=2.5.0
     - ptemcee
     - python
-    - python-lal >=7.1.2
-    - python-lalinspiral >=2.0.2
-    - python-lalmetaio >=2.1.1
-    - python-lalsimulation >=2.5.1
+    - python-lal >=7.6.0
+    - python-lalinspiral >=5.0.1
+    - python-lalmetaio >=4.0.5
+    - python-lalsimulation >=6.0.0
     - python-ligo-lw >=1.8.0
     - pytz
     - reproject >=0.3.2
