@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "2.0.1" %}
+{% set version = "2.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
-  sha256: 0cbeaeeb0361675250e8b9534698845c54ce6b7b2091e4cb612f3f736f9b0a5c
+  sha256: 0efc6c41fc71810a4a7a154b6501411a38c190b7e2a5c8eae0174cf0277499d0
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
-    - setup.cfg-no-lalsuite.patch
+    - pyproject.toml-no-lalsuite.patch
     # don't use extension_helpers to detect openmp
     # see https://git.ligo.org/lscsoft/ligo.skymap/-/issues/32
     - openmp-flags.patch
@@ -45,7 +45,7 @@ build:
   missing_dso_whitelist:
     # https://github.com/conda/conda-build/issues/5403
     - $RPATH/ld64.so.2  # [ppc64le]
-  number: 1
+  number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<310]
@@ -87,18 +87,19 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.5.0
     - networkx
-    - numpy >=1.23.0
+    - numpy >=2.0.0
     - pillow >=2.5.0
     - ptemcee
     - python
-    - python-lal >=7.1.2
-    - python-lalinspiral >=2.0.2
-    - python-lalmetaio >=2.1.1
-    - python-lalsimulation >=2.5.1
+    - python-lal >=7.6.0
+    - python-lalinspiral >=5.0.1
+    - python-lalmetaio >=4.0.5
+    - python-lalsimulation >=6.0.0
     - python-ligo-lw >=1.8.0
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14,!=1.10.0
+    - shapely >=2.0.0
     - tqdm >=4.27.0
 
 test:
