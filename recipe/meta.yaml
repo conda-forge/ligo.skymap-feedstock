@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "2.1.0" %}
+{% set version = "2.1.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
-  sha256: 0efc6c41fc71810a4a7a154b6501411a38c190b7e2a5c8eae0174cf0277499d0
+  sha256: 9c1da8aaecc486cf2d750d6dd78755fb758c81f231b7bb0382cd76723e32d16d
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - pyproject.toml-no-lalsuite.patch
@@ -87,7 +87,7 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.5.0
     - networkx
-    - numpy >=2.0.0
+    - numpy >=1.23.0
     - pillow >=2.5.0
     - ptemcee
     - python
