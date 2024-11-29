@@ -45,7 +45,7 @@ build:
   missing_dso_whitelist:
     # https://github.com/conda/conda-build/issues/5403
     - $RPATH/ld64.so.2  # [ppc64le]
-  number: 0
+  number: 1
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<310]
@@ -75,7 +75,7 @@ requirements:
     - setuptools-scm >=8
   run:
     - astroplan >=0.7
-    - astropy >=6.0
+    - astropy-base >=6.0
     - astropy-healpix >=0.3
     - chealpix
     - gsl
