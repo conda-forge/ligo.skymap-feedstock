@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
   sha256: b1472528dd1046615569c20a96dc142c67df188c4768b25a7281f333db31923d
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
@@ -45,7 +45,7 @@ build:
   missing_dso_whitelist:
     # https://github.com/conda/conda-build/issues/5403
     - $RPATH/ld64.so.2  # [ppc64le]
-  number: 1
+  number: 2
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<310]
