@@ -107,6 +107,9 @@ test:
     - lalapps
     - pip
     - pytest
+    - pytest-astropy
+    - pytest-benchmark
+    - pytest-mpl
   commands:
     # check dependencies
     - python -m pip check
