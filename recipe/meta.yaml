@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "2.1.2" %}
+{% set version = "2.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
-  sha256: b1472528dd1046615569c20a96dc142c67df188c4768b25a7281f333db31923d
+  sha256: 7cf8f71c8cf52c320c2234f7cca18d9a746cca7301f873a353c8566063c2c4d0
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - pyproject.toml-no-lalsuite.patch
@@ -45,7 +45,7 @@ build:
   missing_dso_whitelist:
     # https://github.com/conda/conda-build/issues/5403
     - $RPATH/ld64.so.2  # [ppc64le]
-  number: 2
+  number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
   skip: true  # [win or py<310]
@@ -85,7 +85,7 @@ requirements:
     - ligo-gracedb >=2.0.1
     - ligo-segments >=1.2.0
     - llvm-openmp  # [osx]
-    - matplotlib-base >=3.5.0
+    - matplotlib-base >=3.9.1
     - networkx
     - numpy >=1.23.0
     - pillow >=2.5.0
@@ -107,6 +107,9 @@ test:
     - lalapps
     - pip
     - pytest
+    - pytest-astropy
+    - pytest-benchmark
+    - pytest-mpl
   commands:
     # check dependencies
     - python -m pip check
