@@ -85,7 +85,7 @@ requirements:
     - ligo-gracedb >=2.0.1
     - ligo-segments >=1.2.0
     - llvm-openmp  # [osx]
-    - matplotlib-base >=3.5.0
+    - matplotlib-base >=3.9.1
     - networkx
     - numpy >=1.23.0
     - pillow >=2.5.0
