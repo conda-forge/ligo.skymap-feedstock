@@ -110,6 +110,7 @@ test:
     - pytest-astropy
     - pytest-benchmark
     - pytest-mpl
+    - pytest-rerunfailures
   commands:
     # check dependencies
     - python -m pip check
