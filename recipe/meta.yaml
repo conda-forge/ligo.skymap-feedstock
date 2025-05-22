@@ -48,7 +48,7 @@ build:
   number: 0
   script:
     - CFLAGS="${CFLAGS} -O3 -flto" CPPFLAGS="${CPPFLAGS} -O3" LIGO_SKYMAP_USE_SYSTEM_CHEALPIX=1 {{ PYTHON }} -m pip install . -vv
-  skip: true  # [win or py<310]
+  skip: true  # [win or py<311]
 
 requirements:
   build:
@@ -71,7 +71,7 @@ requirements:
     - numpy
     - pip
     - python
-    - setuptools >=64
+    - setuptools >=77
     - setuptools-scm >=8
   run:
     - astroplan >=0.7
@@ -81,9 +81,10 @@ requirements:
     - gsl
     - healpy
     - h5py
+    - igwn-ligolw
+    - igwn-segments
     - libcblas
     - ligo-gracedb >=2.0.1
-    - ligo-segments >=1.2.0
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.9.1
     - networkx
@@ -91,11 +92,10 @@ requirements:
     - pillow >=2.5.0
     - ptemcee
     - python
-    - python-lal >=7.6.0
-    - python-lalinspiral >=5.0.1
-    - python-lalmetaio >=4.0.5
-    - python-lalsimulation >=6.0.0
-    - python-ligo-lw >=1.8.0
+    - python-lal >=7.7.0
+    - python-lalinspiral >=5.0.3
+    - python-lalmetaio >=4.0.6
+    - python-lalsimulation >=6.2.0
     - pytz
     - reproject >=0.3.2
     - scipy >=0.14,!=1.10.0
