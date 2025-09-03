@@ -1,5 +1,7 @@
---- pyproject.toml.orig
-+++ pyproject.toml
+diff --git a/pyproject.toml b/pyproject.toml
+index fef2b0d..e6e008a 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
 @@ -38,7 +38,6 @@ dependencies = [
      "h5py",
      "igwn-ligolw",
