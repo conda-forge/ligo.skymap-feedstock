@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "2.4.0" %}
+{% set version = "2.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
-  sha256: 933c50190f55dc93722581a127248d26b29ce54263363e4044d30382b7e7b304
+  sha256: 1792bd0f96a36aa8db68996f00601a7e4cd779ce011cdc8ccc7f6d7d2fc9ead3
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - pyproject.toml-no-lalsuite.patch
@@ -59,7 +59,7 @@ requirements:
     - pkg-config
     # cross-compiling:
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - numpy                               # [build_platform != target_platform]
+    - numpy >=2.0.0                       # [build_platform != target_platform]
     - python                              # [build_platform != target_platform]
   host:
     - chealpix
@@ -68,7 +68,7 @@ requirements:
     - libcblas
     - libgomp  # [linux]
     - llvm-openmp  # [osx]
-    - numpy
+    - numpy >=2.0.0
     - pip
     - python
     - setuptools >=77
@@ -88,7 +88,7 @@ requirements:
     - llvm-openmp  # [osx]
     - matplotlib-base >=3.9.1
     - networkx
-    - numpy >=1.23.0
+    - numpy >=2.0.0
     - pillow >=2.5.0
     - ptemcee
     - python
@@ -98,7 +98,7 @@ requirements:
     - python-lalsimulation >=6.2.0
     - pytz
     - reproject >=0.3.2
-    - scipy >=0.14,!=1.10.0
+    - scipy >=1.10.1
     - shapely >=2.0.0
     - tqdm >=4.27.0
 
