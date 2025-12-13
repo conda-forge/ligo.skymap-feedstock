@@ -90,7 +90,6 @@ requirements:
     - networkx
     - numpy >=2.0.0
     - pillow >=2.5.0
-    - ptemcee
     - python
     - python-lal >=7.7.0
     - python-lalinspiral >=5.0.3
