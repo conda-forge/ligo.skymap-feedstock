@@ -1,5 +1,5 @@
 {% set name = "ligo.skymap" %}
-{% set version = "2.5.0" %}
+{% set version = "2.5.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name|replace('.', '_') }}-{{ version }}.tar.gz
-  sha256: a7875d94567fd0a9cbf06a062c992960733ff581afb404733d552c3c9c36cabb
+  sha256: 447e0216243f577ac9f7205f37a830a9a6d33a0bf9f4ab693c359a36eea5fed7
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - pyproject.toml-no-lalsuite.patch
