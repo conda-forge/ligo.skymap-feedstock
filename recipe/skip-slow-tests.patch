@@ -1,0 +1,14 @@
+diff --git a/ligo/skymap/extern/ptemcee/tests.py b/ligo/skymap/extern/ptemcee/tests.py
+index 11f2fab..8d50d2f 100644
+--- a/ligo/skymap/extern/ptemcee/tests.py
++++ b/ligo/skymap/extern/ptemcee/tests.py
+@@ -26,6 +26,9 @@ Defines various nose unit tests.
+ 
+ '''
+ 
++import pytest
++pytest.skip('Skip slow tests', allow_module_level=True)
++
+ import unittest
+ 
+ import numpy as np

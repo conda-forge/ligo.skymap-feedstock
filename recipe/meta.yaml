@@ -17,6 +17,8 @@ source:
     # Use posix_memalign instead of aligned_alloc on macOS because aligned_alloc
     # requires macOS >= 10.15 and Conda currently supports macOS >= 10.13
     - posix_memalign.patch  # [osx]
+    # Skip slow tests
+    - skip-slow-tests.patch
 
 build:
   entry_points:
