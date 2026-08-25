@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: ligo.skymap
-  version: "2.5.3"
+  version: "2.5.4"
   python_min: "3.11"
 
 package:
@@ -11,7 +11,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name|replace('.', '_') }}-${{ version }}.tar.gz
-  sha256: 04177074d1a83db282c94e01da6a0c06f1341d8d472a9f88081dfb187cdf1a22
+  sha256: 042f05de47cd8b8562bbeb5f2e9b939831dc19eb226c439f8577f14966c4ac36
   patches:
     # remove lalsuite requirement, since we can list dependencies explicitly here
     - pyproject.toml-no-lalsuite.patch
@@ -24,7 +24,7 @@ source:
       then: posix_memalign.patch
 
 build:
-  number: 1
+  number: 0
   python:
     entry_points:
       - bayestar-inject = ligo.skymap.tool.bayestar_inject:main
@@ -128,7 +128,6 @@ tests:
         - python -m pip check
         - python -m pip show ligo-skymap
         # Check abi3
-        - export SP_DIR=$(python -c "import site; print(site.getsitepackages()[0])")
         - abi3audit $SP_DIR/ligo/skymap/core.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
         # Run test suite (native builds only)
         - if: build_platform == target_platform
