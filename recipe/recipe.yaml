@@ -24,7 +24,7 @@ source:
       then: posix_memalign.patch
 
 build:
-  number: 0
+  number: 1
   python:
     entry_points:
       - bayestar-inject = ligo.skymap.tool.bayestar_inject:main
