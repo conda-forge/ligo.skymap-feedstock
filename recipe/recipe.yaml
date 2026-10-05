@@ -3,7 +3,6 @@ schema_version: 1
 context:
   name: ligo.skymap
   version: "2.5.4"
-  python_min: "3.11"
 
 package:
   name: ${{ name|lower }}
