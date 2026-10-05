@@ -124,7 +124,7 @@ tests:
         OMP_NUM_THREADS: ${{ env.get('CPU_COUNT', default="1") }}
       content:
         # Check metadata
-        - python -m pip check
+        #- python -m pip check  <-- https://github.com/conda-forge/pytest-benchmark-feedstock/issues/34
         - python -m pip show ligo-skymap
         # Check abi3
         - abi3audit $SP_DIR/ligo/skymap/core.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
