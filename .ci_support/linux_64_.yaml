@@ -1,7 +1,7 @@
 c_compiler:
 - gcc
 c_compiler_version:
-- '14'
+- '15'
 c_stdlib:
 - sysroot
 c_stdlib_version:
@@ -19,6 +19,6 @@ libcblas:
 numpy:
 - '2'
 python_min:
-- '3.10'
+- '3.11'
 target_platform:
 - linux-64
