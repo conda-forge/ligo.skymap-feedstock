@@ -113,7 +113,7 @@ tests:
         - abi3audit
         - lalapps
         - pip
-        - pytest
+        - pytest <9.2.0
         - pytest-astropy
         - pytest-benchmark
         - pytest-mpl
